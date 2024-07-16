@@ -14,5 +14,16 @@ if (isset($_POST)) {
         $query->execute();
         $pdo = null;
         echo "ok";
+    } else {
+        $id = $_POST['idp'];
+        $query = $pdo->prepare("UPDATE productos SET codigo = :cod, producto = :pro, precio =:pre, cantidad = :cant WHERE id = :id");
+        $query->bindParam(":cod", $codigo);
+        $query->bindParam(":pro", $producto);
+        $query->bindParam(":pre", $precio);
+        $query->bindParam(":cant", $cantidad);
+        $query->bindParam("id", $id);
+        $query->execute();
+        $pdo = null;
+        echo "modificado";
     }
 }

@@ -18,12 +18,13 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-body">
                         <form action="" method="POST" id="frm">
                             <div class="form-group">
                                 <label for="">Codigo</label>
+                                <input type="hidden" name="idp" id="idp" value="">
                                 <input type="text" class="form-control form-control-sm" name="codigo" id="codigo"
                                     placeholder="Ingrese Codigo">
                             </div>
@@ -58,7 +59,20 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-6">
+            
+            <div class="col-lg-8">
+
+            <div class="row">
+                    <div class="col-lg-12 ml-auto">
+                        <form action="" method="post">
+                            <div class="form-group">
+                                <input type="text" name="buscar" id="buscar" placeholder="Buscar..." class="form-control form-control-sm">
+                                <br>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
                 <div class="card">
                     <div class="card-body">
                         <table class="table table-hover table-responsive">

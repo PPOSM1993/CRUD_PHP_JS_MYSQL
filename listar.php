@@ -1,8 +1,14 @@
 <?php
-
+$data = file_get_contents("php://input");
 require "conexion.php";
 $consulta = $pdo->prepare("SELECT  * FROM productos ORDER BY id ASC");
 $consulta->execute();
+
+if($data != "") {
+    $consulta = $pdo->prepare("SELECT * FROM productos WHERE id LIKE '%".$data."%' OR producto LIKE '%".$data."%' OR precio LIKE '%".$data."%'");
+    $consulta->execute();
+}
+
 $resultado = $consulta->fetchAll(PDO::FETCH_ASSOC);
 foreach ($resultado as $data) {
     echo "<tr>
@@ -12,7 +18,7 @@ foreach ($resultado as $data) {
                 <td>" . $data['cantidad'] . "</td>
 
                 <td class='text-center'>
-                    <button type='button' class='btn btn-warning btn-sm'>
+                    <button type='button' class='btn btn-warning btn-sm'  onclick=Editar('" . $data['id'] . "')>
                         <i class='fa-solid fa-pen-nib'></i>
                         Editar
                     </button>
